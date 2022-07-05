@@ -78,15 +78,58 @@
                 <label for=""><input type="radio" name="gende" id="female">女</label>
               </dd>
             </dt>
-
-          </dl>
-          <dl>
             <dt>年龄
               <dd>
-                <input type="text"  name="date" value="2022/07/05">
+                <select name="age" id="">
+                  <option value="" hidden>请选择</option>
+                  <optgroup label="少年">
+                    <option value="1-6">1-6岁</option>
+                    <option value="7-12">7-12岁</option>
+                  </optgroup>
+                  <optgroup label="青年">
+                    <option value="13-18">13-18岁</option>
+                    <option value="19-24">19-24岁</option>
+                    <option value="25-30">25-30岁</option>
+                  </optgroup>
+                  <optgroup label="中年">
+                    <option value="31-36">31-36岁</option>
+                    <option value="37-42">37-42岁</option>
+                  </optgroup>
+                </select>
+                </dd>
+            </dt>
+          </dl>
+          <dl>
+            <dt>生日
+              <dd>
+                <input type="date"  name="date" value="2022-07-05">
+              </dd>
+            </dt>
+            <dt>生辰
+              <dd>
+                <input type="time" name="birthtime" >
+              </dd>
+            </dt>
+            <dt>照片
+              <dd>
+                <label for="upload">点我上传照片，我比上传按钮好看<input type="file" name="avatar" id="upload" hidden></label>
+              </dd>
+            </dt>
+            <dt>自我介绍
+              <dd>
+                <textarea name="" id="" cols="30" rows="10">&lt;textarea></textarea>
               </dd>
             </dt>
           </dl>
+          <fieldset disabled>
+            <legend>这里全部禁用了</legend>
+            <input type="text" name="" id="">
+            <input type="text">
+            <input type="text">
+            <input type="text">
+          </fieldset>
+          <button>提交</button>
+          <button type="submit">重置</button>
         </form>
       </div>
     </div>
