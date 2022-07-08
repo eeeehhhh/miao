@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    /* 只能在这里写css，不能改变页面的HTML结构 */
+    body h1 {
+      color: black;
+      text-shadow: 1px 1px 0px gray,
+                   2px 2px 0px gray;
+    }
+    body h1 span {
+      color: blue;
+    }
+    body h3 {
+      color: white;
+      font-size: 40px;
+      text-shadow: 0 0 1px red,
+                   0 0 1px red,
+                   0 0 1px red;
+    }
+    h3+p {
+      font-size: 40px;
+    }
+    [placeholder] {
+      font-size: 40px;
+    }
+    h2 {
+      font-size: 15px;
+      font-family: "comic sans ms", 'comic sans', '宋体', 'simsun', serif;
+      text-transform: capitalize ;
+      font-variant: small-caps;
+    }
+    p :last-child {
+    font-size: 150%;
+    }
+    .a {
+      text-align: right;
+      xtext-align-last: justify;
+      font-style: italic;
+
+    }
+    b :first-child {
+      color: #f0f;
+      text-decoration: underline;
+      text-decoration-color: orangered;
+    }
+    .d {
+      font-size: 2px;
+      word-spacing: 5px;
+      letter-spacing: 2px;
+      text-indent: 20px;
+      text-align: justify;
+    }
+    b+span {
+      text-decoration: line-through underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>大<span>喵</span>教育</h1>
+  <h3>大<span>喵</span>教育</h3>
+  <p class="b">
+    请输入序列号：<input placeholder="我的字号会跟外面一样大" type="text"> <br>
+  </p>
+  <h2>'Returnal' players need to take a break before a bug eats their save files '篝火'玩家需要在游戏的 bug 吃掉他们的存档之前先休息一下</h2>
+  <p class="a">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure <b><span>suscipit</span></b> doloremque magnam delectus, reiciendis architecto ipsam nihil numquam <span>nesciunt sapiente, accusantium, dolore.</span> Culpa repudiandae incidunt delectus. Officia, veritatis voluptas accusantium.</p>
+  <p class="d">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, autem, ad. Quos fugit quam, vitae doloribus quo quisquam aut iure! Exercitationem ea in voluptatibus a, perspiciatis libero, eum quod? Et!</p>
+
+  <p class="c">
+    <span>aa <span>bb <span>cc <span></span>dd</span></span></span>
+  </p>
+
+</body>
+</html>
