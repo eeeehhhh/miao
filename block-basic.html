@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 20px;
+    }
+    div:first-child {
+      background-color: red;
+    }
+    .a{
+      background-color: red;
+      width: 600px;
+      margin: auto;
+
+    }
+    main {
+      width: 600px;
+      border: 3px solid black;
+      margin: auto;
+      margin-top: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+      box-sizing: border-box;
+    }
+    .b {
+      height: 60px;
+      overflow-y: scroll;
+    }
+    main>p:nth-child(2) {
+
+      width: auto;
+      border: 30px solid violet;
+    }
+    .c {
+      height: 60px;
+      overflow-y: auto;
+    }
+    .d {
+      border-width: 50px 50px 50px 50px;
+      border-color: white white orange white ;
+      border-style: solid;
+      width: 0px;
+      margin: auto;
+      margin-top: 50px;
+    }
+    .d {
+      background-color:violet;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <p class="a">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis quis ex alias provident ad perferendis nostrum consequatur dolore fugiat eligendi, architecto perspiciatis voluptatum libero, quaerat minima autem maiores reprehenderit! Maiores.</p>
+  </div>
+  <main>
+    <p class="b">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, adipisci repellat. Numquam quis vel nesciunt tempore eaque repellat. Dolorum sapiente quis perferendis recusandae aspernatur eligendi ex error laboriosam beatae.
+    </p>
+    <p></p>
+    <p class="c">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi nisi itaque vero! Ipsam alias nemo deserunt odio! Animi adipisci earum ducimus deserunt, voluptatum minus? Sapiente quam dolore similique doloremque explicabo?
+    </p>
+  </main>
+  <div>
+    <p class="d">
+    </p>
+  </div>
+</body>
+</html>

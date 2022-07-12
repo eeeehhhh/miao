@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0px;
+    }
+    body>div:first-child {
+      background-color: black;
+
+    }
+    .a {
+      color: white;
+      width: 600px;
+      margin: auto;
+    }
+    .b {
+      width: 600px;
+      margin: auto;
+    }
+    main {
+      width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    main>div {
+      width: 180px;
+      height: 40px;
+      border: 3px solid black;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      background-color: pink;
+      text-align: center;
+    }
+    main>div:nth-child(n+5) {
+      margin-left: 210px;
+    }
+    main>div:nth-child(n+9) {
+      margin-left: 405px;
+    }
+    main>div:nth-child(4n+5) {
+      margin-top: -220px ;
+    }
+    .c {
+      width: 600px;
+      margin: auto;
+    }
+    ul {
+      padding-left: 1px;
+      overflow: hidden;
+    }
+    ul>li {
+      padding-top: 1px;
+      border-bottom: 1px dotted ;
+      margin-bottom: -1px;
+    }
+    div:nth-child(5) {
+      background-color:violet;
+    }
+    div:nth-child(5)>p {
+      text-align: center;
+      width: 600px;
+      margin: auto;
+    }
+  </style>
+
+</head>
+<body>
+  <div>
+    <p class="a">hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果hello world 请调整浏览器窗口大小查看效果</p>
+  </div>
+  <div>
+    <p class="b">页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px</p>
+  </div>
+  <main>
+      <div>产品</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>产品</div>
+      <div>产品</div>
+  </main>
+  <div class="c">
+    <ul>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+      <li>link</li>
+    </ul>
+  </div>
+  <div>
+    <p class="d">
+      &copy;版权所有<br>
+      本页所有元素均用块元素
+    </p>
+  </div>
+</body>
+</html>
