@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .e {
+      background-color: rgb(27 75 105);
+    }
+    ul {
+      display:none;
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      background-color: rgb(46, 120, 167);
+      width: 100px;
+    }
+    .a,.b,.c,.d  {
+      position: relative;
+      background-color: rgb(27, 75, 105);
+      display: inline-block;
+
+    }
+    .a:hover>ul{
+      display: block;
+    }
+    .b:hover>ul{
+      display: block;
+    }
+    .c:hover>ul{
+      display: block;
+    }
+    .d:hover>ul{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="e">
+  <div class="a">文件
+    <ul>
+      <li>新建文本文件</li>
+      <li>新建文件..</li>
+      <li>新建窗口</li>
+      <li>打开文件</li>
+    </ul>
+  </div>
+  <main class="b">编辑
+    <ul>
+      <li>撤销</li>
+      <li>恢复</li>
+      <li>剪切</li>
+      <li>复制</li>
+    </ul>
+  </main>
+  <section class="c">选择
+    <ul>
+      <li>全选</li>
+      <li>扩大选区</li>
+      <li>缩小选区</li>
+      <li>复制上一行</li>
+    </ul>
+  </section>
+  <header class="d">查看
+    <ul>
+      <li>命令面板</li>
+      <li>打开视图</li>
+      <li>外观</li>
+      <li>编辑器视图</li>
+    </ul>
+  </header>
+</div>
+</body>
+</html>
