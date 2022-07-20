@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/less">
+    /* * {
+      margin: 0px;
+      padding: 0px;
+    } */
+    .circle {
+      display: none;
+    }
+    .ball-ground {
+    width: 200px;
+    height: 100px;
+    background-color: rgb(180, 180, 180);
+    border-radius: 50px;
+    position: relative;
+    transition: 1s;
+    }
+    .ball {
+      width: 90px;
+      height: 90px;
+      background-color: #fff;
+      border-radius: 50px;
+      box-shadow: 0 0 10px ;
+      position: absolute;
+      top: 13px;
+      left: 14px;
+      transition: 1s;
+    }
+
+    .circle:checked ~ label>.ball-ground {
+      background-color: rgb(65, 200, 65);
+    }
+    .circle:checked ~ label>.ball {
+      left: 113px;
+    }
+
+  </style>
+</head>
+<body>
+    <input type="checkbox" id="circle" class="circle">
+    <label for="circle" >
+      <div class="ball-ground"></div>
+      <div class="ball"></div>
+    </label>
+  <script src="https://cdn.jsdelivr.net/npm/less" ></script>
+</body>
+</html>
