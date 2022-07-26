@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    table {
+    .part1 {
       border-collapse: collapse;
       xborder: 5px solid blue;
       text-align: center;
@@ -14,16 +14,16 @@
       width: 320px;
       height: 320px;
     }
-    tr,td {
+    .part1 tr,.part1 td {
       border: 5px solid blue;
       xwidth: 100px;
       xheight: 100px;
     }
-    td {
+    .part1 td {
       position: relative;
     }
 
-    td:hover::after {
+    .part1 td:hover::after {
       content: "";
       z-index: 99;
       width: 100%;
@@ -33,26 +33,62 @@
       top: -5px;
       left: -5px;
     }
-    /* .part2 {
-      width: 300px;
-      height: 300px;
+    .part2 {
+      width: 330px;
+      height: 330px;
       xmargin: auto;
+      margin-bottom: 100px;
     }
     ul {
       padding: 0px;
-      margin: 0px;
+      margin: 0px ;
       font-size: 0px;
+      xposition: relative;
     }
     li{
       display: inline-block;
       width: 100px;
       height: 100px;
       border: 5px solid blue;
-      box-sizing: border-box;
+      margin: 0 -5px -5px 0;
       font-size: 16px;
       text-align: center;
-    } */
-
+      position: relative;
+      background-color: yellow;
+      line-height: 100px;
+    }
+    .part2 li:hover {
+      border: 5px solid red;
+      z-index: 8;
+    }
+    .part3 {
+      border-collapse: collapse;
+      width: 170px;
+      height: 170px;
+      text-align: center;
+      margin-bottom: 100px;
+    }
+    .part3 tr,.part3 col {
+      border: 5px solid blue;
+    }
+    .part3 td:hover {
+      border: 5px solid red;
+    }
+    aside {
+      width: 220px;
+      height: 220px;
+      background-color: red;
+    }
+    aside>div {
+      width:100%;
+      height: 100%;
+      display: flex;
+      align-items: end;
+      transition: 2s;
+    }
+    aside>div:hover {
+      font-size: 48px;
+    }
   </style>
 </head>
 <body>
@@ -75,7 +111,7 @@
       </tr>
     </table>
   </div>
-  <!-- <section class="part2">
+  <section class="part2">
     <ul>
       <li>1</li>
       <li>2</li>
@@ -87,7 +123,32 @@
       <li>8</li>
       <li>9</li>
     </ul>
-  </section> -->
-  
+  </section>
+  <main>
+    <table class="part3">
+      <col>
+      <col>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+      </tr>
+    </table>
+  </main>
+  <aside>
+    <div>
+      字体
+    </div>
+  </aside>
 </body>
 </html>
