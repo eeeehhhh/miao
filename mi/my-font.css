@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 图标字体;
+  src: url(mi-iconfont.ttf);
+}
+
+.icon {
+  font-family: 图标字体;
+  font-style:normal;
+}
+.icon-shopping-cart::before {
+  content: '\E60C'
+}
+.icon-search::before {
+  content: '\E616'
+}
+.icon-arrow-phone::before {
+  content: '\E623';
+}
+.icon-more::before {
+  content: '\E615';
+}
