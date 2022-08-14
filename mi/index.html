@@ -4,78 +4,1004 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>小米商城</title>
-  <link rel="stylesheet" href="./mi.css">
-  <link rel="stylesheet" href="./my-font.css">
+  <title>mi</title>
+  <link rel="stylesheet" href="my-font.css">
+  <style type="text/less">
+    * {
+      xbackground-color: rgba(0, 0, 0, 0.1);
+      xbox-shadow:inset 0 0 2px red;
+    }
+    body {
+      margin: 0;
+      overflow: auto;
+      font: 14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+    }
+    a {
+      text-decoration:none;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    .top-black {
+      background-color: #333;
+      height: 40px;
+      .top-black-inner {
+        width: 1226px;
+        height: 40px ;
+        margin: auto;
+        /* background-color: pink; */
+        display:flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #424242;
+        line-height: 40px;
+        a {
+          display: inline-block;
+          color: #b0b0b0;
+          &:hover {
+            color: white;
+          }
+        }
+        .sep {
+          margin: 0 .3em;
+        }
+        .left-links {
+        }
+        .right-links {
+          margin-left: 200px;
+          position: relative;
+          display: flex;
+          .shopping-cart {
+            width: 120px;
+            margin-left: 20px  ;
+            text-align: center;
+            background-color: #424242;
+            z-index: 999;
+              &:hover {
+                z-index: 999;
+              }
+              .icon {
+                vertical-align: bottom;
+                font-size: 20px;
+              }
+              &:hover + .shopping-list {
+                height: 100px;
+                width: 320px;
+                display: block;
+                text-align: center;
+              }
+            }
+            .shopping-list {
+              width: 320px;
+              position: absolute;
+              overflow: hidden;
+              text-align: center;
+              top: 40px;
+              right: 0;
+              height: 0px;
+              box-shadow: 0 0 8px grey;
+              background-color: rgb(255, 255, 255);
+              transition: 1s;
+              z-index: 20;
+              transition: 0.6s;
+              &:hover {
+                height: 100px;
+              }
+            }
+        }
+      }
+    }
+
+    .top-nav {
+      height: 100px;
+      margin: auto;
+      width: 1226px;
+      display: flex;
+      align-items: center;
+      xposition: relative;
+      .logo {
+        margin-right: 200px;
+        img {
+          height: 50px;
+          width: 50px;
+        }
+      }
+      .product-category {
+        display: flex;
+        > li {
+          font-size: 16px;
+          padding:0 10px;
+          height: 100px;
+          line-height:100px;
+          &:hover {
+            cursor: pointer;
+          }
+          .product-submenu-wrapper {
+            position: absolute;
+            overflow: hidden;
+            left: 0;
+            height: 0;
+            display: flex;
+            width: 100%;
+            z-index: 777;
+            transition: 0.5s height , 0s 0.5s  z-index ;
+            .product-submenu {
+              width: 1226px;
+              margin:auto;
+              display:flex;
+              background-color: #ffffff;
+              li {
+                width: calc( 1226px / 6 );
+                height: 230px;
+              }
+            }
+          }
+          &:hover .product-submenu-wrapper{
+            transition: 0.5s height, 0s  z-index;
+            z-index: 999;
+          }
+        }
+        &:hover> li .product-submenu-wrapper {
+         transition: 0.5s height, 0s  z-index;
+         height: 230px;
+        }
+      }
+      .search-form {
+        margin-left: auto ;
+        display: flex;
+        position: relative;
+        &:hover {
+          input,button {
+            border-color: #b0b0b0 ;
+          }
+        }
+        &:focus-within {
+          input,button {
+          border-color:#ff6700;
+          }
+        }
+        input {
+          font-size: 16px;
+          width: 245px;
+          height: 50px;
+          box-sizing:border-box;
+          border: 1px solid #e0e0e0;
+          outline: none;
+          border-right: none;
+
+        }
+        button {
+          width: 50px;
+          border: 1px solid #e0e0e0;
+          height: 50px;
+          font-size: 2em;
+          &:hover {
+            border-color:#ff6700;
+            background-color:  #ff6700;
+            color:  white;
+            cursor:pointer;
+          }
+          .icon {
+            margin: auto;
+          }
+        }
+        .suggestion {
+          display: none;
+          position: absolute;
+          left: 0;
+          top: 100%;
+          li {
+            padding-left: 20px;
+            margin: 15px 0px;
+          }
+        }
+        input:focus ~ .suggestion {
+          display: block;
+          border: 1px solid #ff6700;
+          border-top: none;
+          width: 246px;
+          height: 246px;
+          box-sizing: border-box;
+          background-color: #fff;
+          position: absolute;
+          z-index: 199;
+        }
+      }
+    }
+
+
+    .hero {
+      width: 1226px;
+      height: 460px;
+      margin: auto;
+      position: relative;
+      .product-menu {
+        position: absolute;
+        height: 100%;
+        width: 235px;
+        padding: 20px 0;
+        box-sizing:border-box;
+        background-color: rgba(61, 61, 61, 0.5);
+        color:white;
+        z-index: 888;
+        > li {
+          height: 42px;
+          line-height: 42px;
+          padding-left: 30px;
+          padding-right: 20px;
+          font-size: 14px;
+          &::after {
+            content:' \E623';
+            font-family: 图标字体;
+            float: right;
+            font-size:1.5em;
+          }
+          &:hover {
+            cursor: pointer;
+          }
+          &:hover .product-menu-sub {
+            display: block;
+          }
+          a {
+            &:hover span{
+              color: #ff6700;
+            }
+            img {
+              vertical-align: middle;
+            }
+            span {
+              display: inline-block;
+              width: 90px;
+              height: 40px;
+              line-height: 40px;
+              color: black;
+            }
+          }
+          .product-menu-sub {
+            position: absolute;
+            left: 100%;
+            height: 460px;
+            top: 0;
+            display: none;
+            li {
+              height: calc( 460px / 6);
+              width: 248px  ;
+              padding-left: 20px ;
+              line-height:calc(460px / 6);
+              background-color:  white;
+              &:nth-child(n + 7) {
+                margin-left: 248px;
+              }
+              &:nth-child(n + 13) {
+                margin-left: 496px;
+              }
+              &:nth-child(n + 19) {
+                margin-left: 744px;
+              }
+              &:nth-child(6n + 7) {
+                margin-top: -460px;
+              }
+            }
+          }
+        }
+      }
+      .slider{
+        width: 1226px;
+        height: 460px;
+        position: relative;
+        z-index: 97;
+        input {
+          position:absolute;
+          bottom: 20px;
+          right: 20px;
+          display:none;
+        }
+        .indicators {
+          position: absolute;
+          right: 30px;
+          bottom: 18px;
+          z-index: 100;
+          label {
+           display: inline-block;
+           width: 6px;
+           height: 6px;
+           margin: 2px;
+           background-color: transparent;
+           border:2px solid rgba(124, 124, 124,0.5 );
+           border-radius: 50% ;
+           cursor: pointer;
+           &:hover {
+            background-color: rgb(70,70, 70);
+           }
+         }
+        }
+        .imgs {
+          width: 1226px;
+          height: 460px;
+          position:absolute;
+          overflow: hidden;
+          z-index: 98;
+          img {
+            width: 1226px;
+            height: 460px;
+            position:absolute;
+            xleft: 100%;
+            transition:1s;
+          }
+        }
+        input:nth-child(1):checked ~ .imgs img:nth-child(1),
+        input:nth-child(2):checked ~ .imgs img:nth-child(2),
+        input:nth-child(3):checked ~ .imgs img:nth-child(3),
+        input:nth-child(4):checked ~ .imgs img:nth-child(4),
+        input:nth-child(5):checked ~ .imgs img:nth-child(5) {
+          xleft: 0;
+          z-index: 99;
+        }
+        input:nth-child(1):checked ~ .indicators label:nth-child(1),
+        input:nth-child(2):checked ~ .indicators label:nth-child(2),
+        input:nth-child(3):checked ~ .indicators label:nth-child(3),
+        input:nth-child(4):checked ~ .indicators label:nth-child(4),
+        input:nth-child(5):checked ~ .indicators label:nth-child(5) {
+         background-color:rgb(113, 112, 112);;
+        }
+      }
+    }
+
+    .hero-bottom {
+      width: 100%;
+      height: 215px;
+      .hero-bottom-menu {
+        width: 1226px;
+        height: 215px;
+        margin: auto;
+        display:flex;
+        .hero-bottom-menu-one {
+          display: inline-block;
+          width: 235PX;
+          height: 170px;
+          margin:15px 0px 29px 0px;
+          position: relative;
+          font-size: 0;
+            a {
+              display: inline-block;
+              width: calc(235px / 3);
+              height: 85px;
+              font-size: 12px;
+              line-height: 30px;
+              text-align: center;
+              color: rgb(185 185 185);
+              background-color: rgb(95 87 80);
+              overflow: hidden;
+              position: relative;
+              &:hover {
+                color: #fff;
+              }
+              &::before {
+                position: absolute;
+                bottom: 0px;
+                left: 6px;
+                width: 64px;
+                height: 1px;
+                background: #665e57;
+                content: "";
+              }
+              &::after {
+                content: "";
+                background: #665e57;
+                position: absolute;
+                top: 6px;
+                left: 0;
+                width: 1px;
+                height: 70px;
+              }
+            }
+            img {
+              display: block;
+              width: 25px;
+              margin-left: 25px;
+              padding-top: 20px;
+              opacity: 0.8;
+              &:hover {
+                opacity: 1;
+              }
+            }
+        }
+        .hero-bottom-menu-remainding {
+          width: 991px;
+          height: 215px;
+          font-size: 0;
+          span {
+            display: inline-block;
+            width: 316px;
+            height: 170px;
+            /* font-size: 14px; */
+            margin:15px 8px 29px 6px;
+            &:nth-child(1) {
+              margin-left: 15px;
+            }
+            &:nth-child(3) {
+              margin-right: 0px;
+            }
+            img {
+              width: 316px;
+              height: 170px;
+            }
+          }
+        }
+      }
+    }
+
+    .fixed-siderbar {
+      position: fixed;
+      right: 0;
+      bottom: 70px;
+      @media ( max-width:1460px) {
+        left:50%;
+        margin-left:calc(1226px / 2);
+        right: auto;
+      }
+      ul {
+        li {
+          height: 90px;
+          .icon-text {
+            @media ( max-width:1460px) {
+              display:none;
+            }
+          }
+          .icon {
+            display: block;
+            font-size: 3em;
+            @media (max-width:1460px ) {
+              font-size: 2em;
+            }
+          }
+        }
+      }
+    }
+
+    .page-background-color {
+      background-color: rgb(245,245,245);
+      /* overflow: hidden; */
+      .product-category-container {
+        width: 1226px;
+        margin-right: auto;
+        margin-left: auto;
+        &::before {
+          content: '';
+          display: table;
+          clear: both;
+        }
+        .phone-banner {
+          width: 1226px;
+          height: 120px;
+          margin:22px 0 ;
+          overflow: hidden;
+          img {
+            width: 1226px;
+            height: 120px;
+          }
+        }
+      }
+
+
+      .product-category-phone {
+        .phone-title {
+          font-size: 22px;
+          font-weight: 200;
+          height: 58px;
+          line-height: 58px;
+          position: relative;
+          z-index: 50;
+          .more {
+            position: absolute;
+            top: 0;
+            right: 0px;
+            font-size: 16px;
+            font-weight: 400;
+            color: #333;
+            &:hover>a {
+              color: #ff6700;
+            }
+            &:hover a>i {
+              background-color: #ff6700;
+              transition: .4s;
+            }
+            a {
+              color: #333;
+              transition: all .4s;
+              i {
+                width: 12px;
+                height: 12px;
+                padding: 4px;
+                font-size: 12px;
+                line-height: 12px;
+                margin-left: 5px;
+                background-color: grey;
+                border-radius:999px;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+
+
+      .phone-layout{
+        width: 1226px;
+        height: 615px;
+        margin-bottom: 25px;
+        ul {
+          display: flex;
+          width: 1226px;
+          height: 615px;
+          flex-flow: column wrap;
+          align-content: start;
+          gap:15px;
+          li {
+            width: 233px;
+            height: 300px;
+            transition: .4s;
+            text-align: center;
+            background-color: #fff;
+            &:nth-child(1) {
+              width: 234px;
+              height: 615px;
+            }
+            &:hover {
+              transform: translatey(-3px);
+              box-shadow: 0 0 20px rgb(210, 210, 210) ;
+              z-index: 30;
+              /* transition: all .4s; */
+            }
+            img:not(.first) {
+              width: 160px;
+              height: 160px;
+            }
+            .title {
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 5px;
+              color: #333;
+            }
+            .desc  {
+              margin: 0;
+              font-size: 12px;
+              height: 18px;
+              color: #b0b0b0;
+            }
+            .price {
+              color: #ff6700;
+            }
+          }
+        }
+      }
+
+
+      .product-category-intelligent {
+        width: 1226px;
+        height: 673px;
+        .intelligent-title {
+          font-size: 22px;
+          font-weight: 200;
+          height: 58px;
+          width: 1226px;
+          margin:0px;
+          line-height: 58px;
+          .intelligent {
+            margin-right: 1030px;
+          }
+          .hot {
+            font-size: 18px;
+          }
+          .wear {
+            font-size: 18px;
+            margin-left: 10px;
+            float: right;
+          }
+        }
+        .intelligent-page {
+          width: 1226px;
+          height: 615px;
+          font-size: 0;
+          .intelligent-layout-left {
+            display: inline-block;
+            width: 234px;
+            height: 615px;
+            font-size: 14px;
+            margin-right:15px;
+            img {
+              width: 234px;
+              height: 615px;
+              transition: all .4s;
+              &:hover {
+                transform: translatey(-3px);
+                box-shadow: 0 0 20px rgb(210, 210, 210) ;
+              }
+            }
+          }
+         .intelligent-layout-right {
+            width: calc(1226px - 249px);
+            height: 615px;
+            display: inline-block;
+            ul {
+              width: calc(1226px - 249px);
+              height: 615px;
+              margin:0;
+              li {
+                width: 233px;
+                height: 300px;
+                float: left;
+                text-align: center;
+                background-color: #fff;
+                font-size: 14px;
+                transition: .4s;
+                &:hover {
+                transform: translatey(-3px);
+                box-shadow: 0 0 20px rgb(210, 210, 210) ;
+                }
+                .title {
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-bottom: 5px;
+                  color: #333;
+                }
+                .desc  {
+                  margin: 0;
+                  font-size: 12px;
+                  height: 18px;
+                  color: #b0b0b0;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                  white-space: nowrap;
+                }
+                .price {
+                  color: #ff6700;
+                }
+                &:nth-of-type(-n+4) {
+                margin-bottom:7px;
+                margin-left: 7px;
+                margin-right: 8px;
+                }
+                &:nth-of-type(n+5) {
+                margin-top:8px;
+                margin-left: 7px;
+                margin-right: 8px;
+                }
+                &:nth-of-type(4n+1) {
+                  margin-left: 0px;
+                }
+                &:nth-of-type(4n) {
+                  margin-right: 0px;
+                }
+                &:nth-last-child(1) {
+                  height: 145px;
+                  div {
+                    width: 171px;
+                    height: 75px;
+                    margin:45px 31px 35px;
+                    text-align:center;
+                    cursor: pointer;
+                    .more {
+                      display: inline-block;
+                      margin: 0;
+                      font-size: 20px;
+                      margin-right: auto;
+                      float: left;
+                    }
+                    .hot {
+                      margin: 0;
+                      margin-right: auto;
+                      float:left ;
+                      clear: left;
+                      font-weight: 200;
+                    }
+                    i {
+                      position: relative;
+                      top: -10px;
+                      right: -10px;
+                      font-size: 50px;
+                      color: #ff6700;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  </style>
 </head>
 <body>
-  <div class="main">
-    <!-- 页面头部区域 -->
-    <header class="header">
-      <div class="header-navigation">
-        <div class="header-caption-box">
-            <a href="">小米商城</a>
-            <span>|</span>
-            <a href="">MUMI</a>
-            <span>|</span>
-            <a href=" ">loT</a>
-            <span>|</span>
-            <a href=" ">云服务</a>
-            <span>|</span>
-            <a href=" ">天星科技</a>
-            <span>|</span>
-            <a href=" ">有品</a>
-            <span>|</span>
-            <a href=" " >小爱开放平台</a>
-            <span>|</span>
-            <a href=" ">企业团购</a>
-            <span>|</span>
-            <a href=" ">资质证明</a>
-            <span>|</span>
-            <a href=" ">协议规则</a>
-            <span>|</span>
-            <a href=" ">下载app</a>
-            <span>|</span>
-            <a href=" ">Selcet Location</a>
+  <div class="page-wrapper">
+    <nav class="top-black">
+      <div class="top-black-inner">
+        <div class="left-links">
+          <a href="">小米商城</a>
+          <span class="sep">|</span>
+          <a href="">MUMI</a>
+          <span class="sep">|</span>
+          <a href=" ">loT</a>
+          <span class="sep">|</span>
+          <a href=" ">云服务</a>
+          <span class="sep">|</span>
+          <a href=" ">天星科技</a>
+          <span class="sep">|</span>
+          <a href=" ">有品</a>
+          <span class="sep">|</span>
+          <a href=" " >小爱开放平台</a>
+          <span class="sep">|</span>
+          <a href=" ">企业团购</a>
+          <span class="sep">|</span>
+          <a href=" ">资质证明</a>
+          <span class="sep">|</span>
+          <a href=" ">协议规则</a>
+          <span class="sep">|</span>
+          <a href=" ">下载app</a>
+          <span class="sep">|</span>
+          <a href=" ">Selcet Location</a>
         </div>
-        <div>
-          <a href="">登录</a>
-          <a href="">注册</a>
-          <a href="">消息通知</a>
-        </div>
-      </div>
-      <div>
-        <span>购物车</span>
-      </div>
-      <div class="header-logo">
-        <a href=""></a>
-      </div>
-      <div>
-        <ul>
-          <li>Xiaomi手机</li>
-          <li>Redmi手机</li>
-          <li>电视</li>
-          <li>笔记本</li>
-          <li>平板</li>
-          <li>家电</li>
-          <li>路由器</li>
-          <li>服务中心</li>
-          <li>社区</li>
-        </ul>
-        <form action="" class="search">
-          <div>
-            <input type="search" class="search-input">
-            <input type="checkbox" class="search-checkbox">
-            <label for=""></label>
+        <div class="right-links">
+          <div >
+            <a href="#">登录</a>
+            <span class="sep">|</span>
+            <a href="#">注册</a>
+            <span class="sep">|</span>
+            <a href="#">消息通知</a>
           </div>
-        </form>
+          <div class="shopping-cart">
+            <a href="">
+              <span class="icon  icon-shopping-cart"></span>
+               购物车 (0)
+            </a>
+          </div>
+          <div class="shopping-list">
+           暂无
+         </div>
+        </div>
       </div>
-    </header>
-    <div class="home-container">
-      <div class="home-caontainer-list">
-        <ul>
+    </nav>
+
+
+    <div class="top-nav">
+      <a href="" class="logo">
+        <img src="https://s02.mifile.cn/assets/static/image/logo-mi2.png" alt="">
+      </a>
+      <ul class="product-category">
+        <li>Xiaomi手机
+          <div class="product-submenu-wrapper">
+            <ul class="product-submenu">
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7a15df55e98e4163390096ed05b1ef5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7a15df55e98e4163390096ed05b1ef5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7a15df55e98e4163390096ed05b1ef5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7a15df55e98e4163390096ed05b1ef5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7a15df55e98e4163390096ed05b1ef5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7a15df55e98e4163390096ed05b1ef5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+            </ul>
+          </div>
+        </li>
+        <li>Redmi手机
+          <div class="product-submenu-wrapper">
+            <ul class="product-submenu">
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1e1f915167554e99916273b5269da1b5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1e1f915167554e99916273b5269da1b5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1e1f915167554e99916273b5269da1b5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1e1f915167554e99916273b5269da1b5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1e1f915167554e99916273b5269da1b5.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+            </ul>
+          </div>
+        </li>
+        <li>电视
+          <div class="product-submenu-wrapper">
+            <ul class="product-submenu">
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8871821795310769c1d3896c99b12381.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8871821795310769c1d3896c99b12381.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8871821795310769c1d3896c99b12381.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8871821795310769c1d3896c99b12381.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8871821795310769c1d3896c99b12381.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8871821795310769c1d3896c99b12381.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+            </ul>
+          </div>
+        </li>
+        <li>笔记本
+          <div class="product-submenu-wrapper">
+            <ul class="product-submenu">
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3f306e56e070eec07b985baf8f1f57e8.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3f306e56e070eec07b985baf8f1f57e8.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3f306e56e070eec07b985baf8f1f57e8.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3f306e56e070eec07b985baf8f1f57e8.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3f306e56e070eec07b985baf8f1f57e8.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3f306e56e070eec07b985baf8f1f57e8.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+            </ul>
+          </div>
+        </li>
+        <li>平板
+          <div class="product-submenu-wrapper">
+            <ul class="product-submenu">
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/33de34a4caf2834a1828dc51203dc922.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/33de34a4caf2834a1828dc51203dc922.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/33de34a4caf2834a1828dc51203dc922.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+            </ul>
+          </div>
+        </li>
+        <li>家电
+          <div class="product-submenu-wrapper">
+            <ul class="product-submenu">
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cbfab8147c1104eea97c7d0f07581237.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cbfab8147c1104eea97c7d0f07581237.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cbfab8147c1104eea97c7d0f07581237.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+            </ul>
+          </div>
+        </li>
+        <li>路由器
+          <div class="product-submenu-wrapper">
+            <ul class="product-submenu">
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2f88d17e29314286967eeb88bf86cdfc.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2f88d17e29314286967eeb88bf86cdfc.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2f88d17e29314286967eeb88bf86cdfc.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2f88d17e29314286967eeb88bf86cdfc.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2f88d17e29314286967eeb88bf86cdfc.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+              <li><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2f88d17e29314286967eeb88bf86cdfc.png?thumb=1&w=160&h=110&f=webp&q=90" alt=""></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <ul class="product-category">
+        <li>服务中心</li>
+        <li>社区</li>
+      </ul>
+      <form action="" class="search-form">
+        <input type="text">
+        <button>
+          <span class="icon  icon-search"></span>
+        </button>
+        <ul class="suggestion">
+          <li>全部商品</li>
+          <li>红米</li>
+          <li>黑鲨5</li>
           <li>手机</li>
-          <li>电视</li>
+          <li>冰箱</li>
+          <li>电视机</li>
+        </ul>
+      </form>
+    </div>
+
+
+    <div class="hero">
+      <ul class="product-menu">
+          <li>手机
+            <ul class="product-menu-sub">
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b883131e62133041d7ac8272c17762b0.png?thumb=1&w=40&h=40&f=webp&q=90" alt="">
+                  <span>Xiaomi 12S</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>电视
+            <ul class="product-menu-sub">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
           <li>笔记本 平板</li>
           <li>出行 穿戴</li>
           <li>耳机 音箱</li>
@@ -85,54 +1011,240 @@
           <li>健康 儿童</li>
           <li>生活 箱包</li>
         </ul>
-        <div class="home-container-imges">
-          <span></span>
+      <div class="slider">
+          <input type="radio" id="r1-1" name="radio1" checked>
+          <input type="radio" id="r1-2" name="radio1">
+          <input type="radio" id="r1-3" name="radio1">
+          <input type="radio" id="r1-4" name="radio1">
+          <input type="radio" id="r1-5" name="radio1">
+        <div class="imgs">
+          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ce029906e8b21a65cc3ec4966e61ff7d.jpg?w=2452&h=920" alt="">
+          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1b948da8a19fe290d46ae532b54afe7b.jpeg?thumb=1&w=1226&h=460&f=webp&q=90" alt="">
+          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/36b45c624f42fa81732457e3f9773dbd.jpg?thumb=1&w=1226&h=460&f=webp&q=90" alt="">
+          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11366eceddaab36ed8dda2bf1f24b67a.jpeg?thumb=1&w=1226&h=460&f=webp&q=90" alt="">
+          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/94138ec5502b60531e5e4a7793097cc4.jpg?thumb=1&w=1226&h=460&f=webp&q=90" alt="">
         </div>
-        <div class="home-serve">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="indicators">
+          <label for="r1-1"></label>
+          <label for="r1-2"></label>
+          <label for="r1-3"></label>
+          <label for="r1-4"></label>
+          <label for="r1-5"></label>
         </div>
-        <div class="home-imge-check">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
       </div>
     </div>
-    <!-- ! -->
-    <!-- ! -->
-    <!-- ! -->
-    <!-- ! -->
-    <div class="page-main home-main">
-      <div class="home--banner-box">
 
-      </div>
-      <div class="home-all-box  " >
-        <div class="home-phone-title">
-          <h2>手机</h2>
-          <div></div>
+
+    <div class="hero-bottom">
+      <div class="hero-bottom-menu">
+        <div class="hero-bottom-menu-one">
+          <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82abdba456e8caaea5848a0cddce03db.png?w=48&h=48" alt="">保障服务</a>
+          <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/806f2dfb2d27978e33fe3815d3851fa3.png?w=48&h=48" alt="">企业团购</a>
+          <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/eded6fa3b897a058163e2485532c4f10.png?w=48&h=48" alt="">F码通道</a>
+          <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43a3195efa6a3cc7662efed8e7abe8bf.png?w=48&h=48" alt="">米粉卡</a>
+          <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f4846bca6010a0deb9f85464409862af.png?w=48&h=48" alt="">以旧换新</a>
+          <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9a76d7636b08e0988efb4fc384ae497b.png?w=48&h=48" alt="">话费充值</a>
         </div>
-        <div class="home-phone-check">
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+        <div class="hero-bottom-menu-remainding">
+          <span><a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/290270b6fc499fc5fcb653417e99fe91.jpg?w=632&h=340" alt=""></a></span>
+          <span><a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5d1892854c8bb165e755d68bde287d71.jpg?w=632&h=340" alt=""></a></span>
+          <span><a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/28c13d0d11b38ec17fa5d83bc6ba5912.jpg?w=632&h=340" alt=""></a></span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="fixed-siderbar">
+      <ul>
+        <li>
+          <span class="icon icon-shopping-cart"></span>
+          <span class="icon-text">手机app</span>
+        </li>
+        <li>
+          <span class="icon icon-shopping-cart"></span>
+          <span class="icon-text">个人中心</span>
+        </li>
+        <li>
+          <span class="icon icon-shopping-cart"></span>
+          <span class="icon-text">售后服务</span>
+        </li>
+        <li>
+          <span class="icon icon-shopping-cart"></span>
+          <span class="icon-text">人工客服</span>
+        </li>
+        <li>
+          <span class="icon icon-shopping-cart"></span>
+          <span class="icon-text">购物车</span>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="page-background-color">
+      <div class="product-category-container">
+        <div class="phone-banner">
+          <a href="#" class="">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2656295f6c067f48a04a425acf15a096.jpg?thumb=1&w=1226&h=120&f=webp&q=90" alt="">
+          </a>
+        </div>
+
+
+        <div class="product-category-phone">
+          <div class="phone-title">
+            <span>手机</span>
+            <div class="more">
+              <a href="">查看更多
+                <i class="icon icon-arrow-phone"></i>
+              </a>
+            </div>
+          </div>
+          <div class="phone-layout">
+            <ul>
+              <li><a href=""><img class="first" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6b99bcb716c8f76e1fc5475172bdfc27.jpg?thumb=1&w=234&h=614&f=webp&q=90" alt=""></a></li>
+              <li>
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202207011810_86ad513472d1423a3fdec8d7d5107038.png?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                <h3 class="title">Xiaomi 12S Ultra</h3>
+                <p class="desc"><span>这真徕卡 | 专业徕卡影像</span></p>
+                <p class="price"><span>5999元起</span></p>
+                </a>
+              </li>
+              <li>
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202207011810_86ad513472d1423a3fdec8d7d5107038.png?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                  <h3 class="title">Xiaomi 12S Ultra</h3>
+                  <p class="desc"><span>这真徕卡|专业徕卡影像</span></p>
+                  <p class="price"><span>5999元起</span></p>
+                </a>
+              </li>
+              <li>
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202207011810_86ad513472d1423a3fdec8d7d5107038.png?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                  <h3 class="title">Xiaomi 12S Ultra</h3>
+                  <p class="desc"><span>这真徕卡|专业徕卡影像</span></p>
+                  <p class="price"><span>5999元起</span></p>
+                  </a>
+              </li>
+              <li>
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202207011810_86ad513472d1423a3fdec8d7d5107038.png?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                  <h3 class="title">Xiaomi 12S Ultra</h3>
+                  <p class="desc"><span>这真徕卡|专业徕卡影像</span></p>
+                  <p class="price"><span>5999元起</span></p>
+                  </a>
+              </li>
+              <li>
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202207011810_86ad513472d1423a3fdec8d7d5107038.png?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                  <h3 class="title">Xiaomi 12S Ultra</h3>
+                  <p class="desc"><span>这真徕卡|专业徕卡影像</span></p>
+                  <p class="price"><span>5999元起</span></p>
+                  </a>
+              </li>
+              <li>
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202207011810_86ad513472d1423a3fdec8d7d5107038.png?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                  <h3 class="title">Xiaomi 12S Ultra</h3>
+                  <p class="desc"><span>这真徕卡|专业徕卡影像</span></p>
+                  <p class="price"><span>5999元起</span></p>
+                  </a>
+              </li>
+              <li>
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202207011810_86ad513472d1423a3fdec8d7d5107038.png?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                  <h3 class="title">Xiaomi 12S Ultra</h3>
+                  <p class="desc"><span>这真徕卡|专业徕卡影像</span></p>
+                  <p class="price"><span>5999元起</span></p>
+                  </a>
+              </li>
+              <li>
+                <a href=""><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202207011810_86ad513472d1423a3fdec8d7d5107038.png?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                  <h3 class="title">Xiaomi 12S Ultra</h3>
+                  <p class="desc"><span>这真徕卡|专业徕卡影像</span></p>
+                  <p class="price"><span>5999元起</span></p>
+                  </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="product-category-intelligent">
+          <div class="intelligent-title">
+            <span class="intelligent">智能制造</span>
+            <span class="hot">热门</span>
+            <span class="wear">穿戴</span>
+          </div>
+          <div class="intelligent-page">
+            <div class="intelligent-layout-left">
+              <a href="#"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9895c56a7b792fb9053e3085fc261072.jpg?thumb=1&w=234&h=614&f=webp&q=90" alt=""></a>
+            </div>
+            <div class="intelligent-layout-right">
+                <ul>
+                  <li>
+                    <a href="">
+                      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8259e8fb355acf168c66f75d375c6af.jpg?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                      <h3 class="title">Xiaomi Watch S1</h3>
+                      <p class="desc"><span> 蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕</span></p>
+                      <p class="price"><span>1049元起</span></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8259e8fb355acf168c66f75d375c6af.jpg?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                      <h3 class="title">Xiaomi Watch S1</h3>
+                      <p class="desc"><span> 蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕</span></p>
+                      <p class="price"><span>1049元起</span></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8259e8fb355acf168c66f75d375c6af.jpg?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                      <h3 class="title">Xiaomi Watch S1</h3>
+                      <p class="desc"><span> 蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕</span></p>
+                      <p class="price"><span>1049元起</span></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8259e8fb355acf168c66f75d375c6af.jpg?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                      <h3 class="title">Xiaomi Watch S1</h3>
+                      <p class="desc"><span> 蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕</span></p>
+                      <p class="price"><span>1049元起</span></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8259e8fb355acf168c66f75d375c6af.jpg?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                      <h3 class="title">Xiaomi Watch S1</h3>
+                      <p class="desc"><span> 蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕</span></p>
+                      <p class="price"><span>1049元起</span></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8259e8fb355acf168c66f75d375c6af.jpg?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                      <h3 class="title">Xiaomi Watch S1</h3>
+                      <p class="desc"><span> 蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕</span></p>
+                      <p class="price"><span>1049元起</span></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8259e8fb355acf168c66f75d375c6af.jpg?thumb=1&w=200&h=200&f=webp&q=90" alt="">
+                      <h3 class="title">Xiaomi Watch S1</h3>
+                      <p class="desc"><span> 蓝宝石玻璃镜面 | 不锈钢中框 | 1.43”AMOLED大屏幕</span></p>
+                      <p class="price"><span>1049元起</span></p>
+                    </a>
+                  </li>
+                  <li>
+                    <div>
+                      <p class="more">浏览更多</p>
+                      <p class="hot">热门</p>
+                      <i class="icon icon-more"></i>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
 </body>
-<script src="./less.js" ></script>
+<script src="./less.js"></script>
 </html>
