@@ -123,7 +123,7 @@ function reduce(ary, reducer, initialValue) {
 
  reduce([1, 3, 4, 5, 6, 8], (result , it, idx) => {
   return (result[it] = idx, result)
- }, {}) 
+ }, {})
 
 function every(ary, predicate) {
   for(let i = 0; i < ary.length; i++) {
@@ -138,7 +138,7 @@ function every(ary, predicate) {
 function some(ary, predicate) {
   for(let i = 0; i < ary.length; i++) {
     if(predicate(ary[i]) === true) {
-      return true
+      return truee
     }
   }
   return false
@@ -147,7 +147,7 @@ function some(ary, predicate) {
 
 function find(ary, predicate) {
   for(let i = 0; i < ary.length; i++) {
-    if(predicat(ary[i]) ) {
+    if(predicate(ary[i]) ) {
       return ary[i]
     }
   }
