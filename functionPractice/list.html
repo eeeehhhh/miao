@@ -1,0 +1,176 @@
+<script>
+  function arrayToList(ary) {
+    if (ary.length === 0) {
+      return null // null表示空链表
+    }
+    let nodes = []
+
+    // 针对每个数组元素创建一个链表节点并存起来
+    for ( let i = 0; i < ary.length; i++) {
+        var node = {
+        val: ary[i],
+        next: null,
+      }
+      nodes.push(node)s
+    }
+
+    // 将nodes里的节点串起来，将链表节点的前一个的next属性指向下一个节点。
+    for (let j = 0; j < ary.length - 1; j++) {
+      let  currNode = nodes[j]
+      currNode.next = nodes[j + 1] // 相当于将下一个节点的地址存到上一个节点的next属性上
+    }
+
+    return nodes[0]
+}
+arrayToList([1, 3, 4, 5, 6, 7])
+
+function arrayToList2(ary) {
+  let prevNode = {val: 0,next: null,}
+  let dummynode = prevNode
+
+  for (let i = 0; i < ary.length; i++) {
+    let node = {
+      val: ary[i],
+      next: null,
+    }
+    prevNode.next = node // 把当前节点指向给前一个节点的next
+    prevNode = node // 把当前节点指向给下一个节点
+  }
+
+  return dummynode.next
+}
+arrayToList2([1, 3, 4, 5, 6, 7])
+
+
+
+function arrayToListR(ary) {
+  if (ary.length === 0) {
+    return null
+  }
+  // 第一个节点为数组[0]
+  let header = {
+    val: ary[0],
+    next: null,
+  }
+  // 剩余元素创建新数组
+  let restArray = ary.slice(1)
+  // 新数组转换链表
+  let tail = arrayToListR(restArray)
+  // 将第一个节点的next指向tail
+  header.next = tail
+
+  return header
+}
+
+function listToArray(list) {
+  let result = []
+
+  while (list) {
+    result.push(list.val)
+    list = list.next
+  }
+  return result
+}
+
+// 递归
+function listToArrayR(list) {
+  if (!list) {
+    return []
+  }
+  let tail = list.next // 除第一个节点以外的剩余节点组成的链表
+
+  // 将第一个节点与剩余节点组成的链表转换得到的数组连成一个大数组
+  // 剩余节点组成的链表转换数组可以用递归完成
+  let restTail = listToArrayR(tail)
+  restTail.unshift(list.val)
+  return restTail
+}
+
+// 往链表list的前面增加一个新的节点，节点的值为val
+function prepend(list, val) {
+  let node = {
+    val: val,
+    next: null
+  }
+  node.next = list
+  return node
+}
+
+function arrayToList3(ary) {
+  let list = null
+
+  for (let i = ary.length - 1; i--) {
+    list = prepend(list, sry[i])
+  }
+
+  return list
+}
+
+
+function nth(list, n) {
+  if (n < 0) {
+    return undefined
+  }
+
+  let node = list
+  // 遍历节点到n
+  // && node 是指n值大于list节点后，防止node最后为null增加的条件
+  for (let i = 0; i < n && node; i++) {
+    node = node.next
+  }
+
+  if(node) {
+    return node.val
+  } else {
+    return undefined
+  }
+
+}
+
+function nthR(list, n) {
+  if (!list || n < 0) {
+    return undefined
+  }
+  if (n == 0) {
+    return list.val
+  }
+  return nthR(list.next, n - 1)
+}p
+
+function append(list, val) {
+  let node = {val: val, next: null,}
+
+  let p = list
+  // 如果链表为空，则返回新的节点
+  if (!p) {
+    return node
+  }
+
+  // p的下一个节点存在，就往后移动p
+  while (p.next !== null) {
+    p = p.next
+  }
+  p.next = node
+  return list
+
+}
+
+function appendR(list, val) {
+  if(!list) { // 如果链表为空，则返回新的节点
+    let node = {
+      val: val,
+      next: null,
+    }
+    return node
+  }
+  if (!list.next) { // 链表只有一个节点时，满足这个条件说明链表只有一个节点
+    let node = {
+      val: val,
+      next: null,
+    }
+    list.next = node
+    return list
+  }
+  return append(list.next, val)
+}
+</script>
