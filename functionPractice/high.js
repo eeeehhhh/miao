@@ -134,6 +134,11 @@ function every(ary, predicate) {
   return true
 }
 
+function every(ary, predicate) {
+  return ary.reduce((item , initialValue) => {
+    return initialValue && predicate(item)
+  }, true)
+}
 
 function some(ary, predicate) {
   for(let i = 0; i < ary.length; i++) {

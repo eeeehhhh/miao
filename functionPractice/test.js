@@ -134,7 +134,7 @@ function flat(array) {
 // 不用担心depth传入无穷大
 // 无穷大不会减少，但数组深度会减少到内部没有数组
 // 就不会进if循环进行递归
-function flat(array, depth = 1) {
+function flat(array, depth ) {
   if (depth === 0) {
     return array.slice()
   }
@@ -144,7 +144,7 @@ function flat(array, depth = 1) {
   for (let i = 0; i < array.length; i++) {
     let item = array[i]
     if (Array.isArray(item)) {
-      let falttedItem = falt(item ,depth - 1) // 深度减一
+      let falttedItem = flat(item ,depth - 1) // 深度减一
       for (let j = 0; j < falttedItem.length;j++) {
         result.push(item[j])
       }
@@ -154,6 +154,8 @@ function flat(array, depth = 1) {
   }
   return result
 }
+flat([1,2,23,[2,9,[0],3],8,9])
+
 
 
 // 非递归版本，多次循环减少数组深度
