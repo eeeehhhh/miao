@@ -45,3 +45,73 @@ function arrayToTree(array,rootPos = 0) {
 
   return root
 }
+
+function condensedArrayToTree(ary) {
+  if (ary.length == 0) {
+    return null
+  }
+
+  var root = {
+    val: ary[0],
+    left: null,
+    right: null
+  }
+
+  var nodes = [root]
+
+  for (let i = 0; i < ary.length; i++ ) {
+    var currNode = nodes.shift() // 数组中的两个项将会挂到currNode上去
+
+    if (ary[i] != null) {
+      var node = {
+        val: ary[i],
+        left: null,
+        right: null
+      }
+
+      currNode.left = node
+      nodes.push(node)
+    }
+
+    i++
+
+    if (ary[i] != null) {
+      var node = {
+        val: ary[i],
+        left: null,
+        right: null
+      }
+
+      currNode.left = node
+      nodes.push(node)
+    }
+  }
+  return root
+}
+
+function treeToCondensedArray(root) {
+  var ary = []
+
+  if(!root) {
+    return ary
+  }
+
+  var nodes = [root]
+
+
+  while (nodes.length) {
+    var node = nodes.shift()
+
+    if (node) { // 如果node不为null
+      ary.push(node.val)
+      nodes.push(node.left)
+      nodes.push(node.right)
+    } else {
+      ary.push(node)
+    }
+
+  }
+
+  return ary
+}
+

@@ -36,7 +36,7 @@ var eeeehhhh = {
     }
     return result
   }
-  compact([false, NaN, 0,null,undefined ,5,7,'' ,{}])
+  // compact([false, NaN, 0,null,undefined ,5,7,'' ,{}])
   ,
 
   fill: function fill(ary, val, start = 0, end = ary.length) {
@@ -95,4 +95,3 @@ var eeeehhhh = {
 }
 
 
-[1,null,2,null,null,3,5,null,null,null,null,4,null,null,6]
