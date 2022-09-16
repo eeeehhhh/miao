@@ -114,4 +114,3 @@ function treeToCondensedArray(root) {
 
   return ary
 }
-

@@ -144,9 +144,9 @@ function flat(array, depth ) {
   for (let i = 0; i < array.length; i++) {
     let item = array[i]
     if (Array.isArray(item)) {
-      let falttedItem = flat(item ,depth - 1) // 深度减一
+      let falttedItem = flat(item, depth - 1) // 深度减一
       for (let j = 0; j < falttedItem.length;j++) {
-        result.push(item[j])
+        result.push(falttedItem[j])
       }
     } else {
       result.push(item)
@@ -154,7 +154,7 @@ function flat(array, depth ) {
   }
   return result
 }
-flat([1,2,23,[2,9,[0],3],8,9])
+flat([1,2,23,[2,9,[1],3],8,9])
 
 
 

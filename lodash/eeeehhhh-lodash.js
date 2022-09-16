@@ -50,7 +50,7 @@ var eeeehhhh = {
   // fill(Array(3), '*')
   ,
 
-  drop: function drop(ary, n = 0) {
+  drop: function drop(ary, n = 1) {
     let  result = []
     for(let i = n; i < ary.length; i++) {
       result.push(ary[i])
@@ -85,13 +85,54 @@ var eeeehhhh = {
       if(Array.isArray(array[i])) {
         let ary = array[i]
         for(let j = 0; j < ary.length; j++ ) {
-          result.push(ary[i])
+          result.push(ary[j])
         }
+      } else result.push(array[i])
+    }
+    return result
+  }
+  // flatten ([1,2,3,[4,5]])
+  ,
+
+  flattenDeep: function flattenDeep(array, depth) {
+    let result = []
+    if (depth === 0) {
+      return array.slice()
+    }
+    for(let i = 0; i < array.length; i++) {
+
+      if(Array.isArray(array[i])) {
+        let ary = array[i]
+        let flatten = flattenDeep(ary, depth - 1)
+
+        for(let j = 0; j < flatten.length; j++ ) {
+          result.push(flatten[j])
+        }
+      } else {
+        result.push(array[i])
       }
-      result.push(array[i])
+    }
+    return result
+  }
+  // flattenDeep([1,2,23,[2,9,[1, 2, [4]],3],8,9],2)
+  ,
+
+  flattenDepth: function flattenDepth(array, depth) {
+    let result = []
+    if (depth === 0) {
+      return array.slice()
+    }
+    for(let i = 0; i < array.length; i++) {
+      if(Array.isArray(array[i])) {
+        let ary = array[i]
+        let flatten = flattenDepth(ary, depth - 1)
+        for(let j = 0; j < flatten.length; j++ ) {
+          result.push(flatten[j])
+        }
+      } else {
+        result.push(array[i])
+      }
     }
     return result
   }
 }
-
-
